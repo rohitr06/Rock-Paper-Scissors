@@ -1,12 +1,28 @@
 import { useState } from "react";
 
 const Rps= () =>{
+    const [darkMode, setDarkMode] = useState(false);
     let userWin=true;
     var winnerMessage="";
     const [userCount,setUserCount]=useState(0);
     const[computerCount,setComputerCount]=useState(0);
 const choices=["Rock","Paper","Scissors"];
 const [result,setResult]=useState("Game starts");
+
+
+const toogleDarkMode=()=>{
+    if(darkMode){
+    document.documentElement.classList.remove('dark');
+        console.log("light");
+}
+    else{
+        document.documentElement.classList.add('dark');
+        console.log("dark");
+    }
+    setDarkMode((curr)=>!curr);
+    
+
+}
 
 const getComputerChoice=()=>{
    return choices[Math.floor(Math.random()*choices.length)];
@@ -67,13 +83,13 @@ const handleClick = (userChoice) => {
 
 }
 return(
-<div className="bg-black text-white rounded-3xl p-9  justify-center">
+<div className="bg-white text-black rounded-3xl p-9  justify-center dark:bg-black dark:text-white ">
     <div className=" p-6 font-mono text-5xl "><h1>Rock Paper Scissors</h1>
     </div>
 
     <div className="flex justify-center space-x-44 mt-12">
        { choices.map((choice)=>(
-        <button key={choice} className="text-2xl text-white font-serif bg-orange-500 w-24 h-24 flex items-center justify-center  rounded-full hover:bg-orange-200 hover:text-black " onClick={()=>handleClick(choice)}
+        <button key={choice} className="text-2xl text-black dark:text-white font-serif bg-orange-500 w-24 h-24 flex items-center justify-center  rounded-full hover:bg-orange-200 hover:text-black " onClick={()=>handleClick(choice)}
         >{choice}</button>
        )
     )}
@@ -98,6 +114,9 @@ return(
     <div className="text-2xl mt-12">
         <p>{result}</p>
     </div>
+
+    <button className="absolute bottom-16 right-16 p-2 w-16 h-16 bg-neutral-800 rounded-full text-white dark:bg-white dark:text-black" onClick={toogleDarkMode}>
+        {darkMode?"Light":"Dark"}</button>
 
 </div>
 

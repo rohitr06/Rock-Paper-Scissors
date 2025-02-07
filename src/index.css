@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+*{
+   @apply transition-colors duration-50;
+}
+html{
+    @apply bg-white text-black;
+}
+
+.dark{
+    @apply bg-black text-white;
+}
