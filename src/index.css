@@ -4,7 +4,7 @@
 
 
 *{
-   @apply transition-colors duration-50;
+   @apply transition-colors duration-75;
 }
 html{
     @apply bg-white text-black;
